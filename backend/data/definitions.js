@@ -220,7 +220,7 @@ const definitions = [
     note: '',
   },
   {
-    name: 'Tiems for the beeper',
+    name: 'Times for the beeper',
     register: 62,
     len: 1,
     format: 'INTEGER',
