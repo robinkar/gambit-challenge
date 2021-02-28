@@ -14,7 +14,7 @@
   },
   "scripts": {
     "start:front": "react-scripts start",
-    "start:back": "cd backend && yarn start",
+    "start:back": "cd backend && yarn start-dev",
     "start": "cd backend && yarn start",
     "build": "react-scripts build",
     "test": "react-scripts test",
