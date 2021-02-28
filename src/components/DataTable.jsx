@@ -3,7 +3,7 @@ import DataEntry from './DataEntry';
 
 const DataTable = ({ data }) => (
   <div>
-    <table>
+    <table className="data-table">
       <thead>
         <tr>
           <td>Name</td>

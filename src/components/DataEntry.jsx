@@ -1,9 +1,9 @@
 import React from 'react';
 
 const DataEntry = ({ data }) => (
-  <tr>
-    <td>{data.name}</td>
-    <td>{data.value}</td>
+  <tr className="data-entry">
+    <td className="data-entry-name">{data.name}</td>
+    <td className="data-entry-value">{data.value}</td>
   </tr>
 );
 

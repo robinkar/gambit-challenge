@@ -23,6 +23,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1>Modbus data</h1>
       <DataTable data={data} />
     </div>
   );
