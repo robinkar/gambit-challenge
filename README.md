@@ -1,70 +1,36 @@
-# Getting Started with Create React App
+# Gambit Challenge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About
+The solution consists of a backend and a frontend, which are written in JavaScript. The backend uses NodeJS with Express and the frontend uses React.    
+The Modbus data is parsed on the backend and then made available for the frontend in an API endpoint, /api/data. On the frontend the data is then presented in a mobile friendly way.  
+The backend has definitions for what data corresponds to what registers and how to parse the data, e.g.    
+`{
+    name: 'Velocity',
+    register: 5,
+    len: 2,
+    format: 'REAL4',
+    note: '',
+  }`  
+The data is read from disk on server startup and never updates in the current implementation, but could easily be made to fetch live data from some source.  
+The frontend consists of a simple React application that fetches the data from the backend  using Axios and then presents the data in a simple table.  
 
-## Available Scripts
+Live demo available at https://rk-gambit-challenge.herokuapp.com/  
 
-In the project directory, you can run:
+## Building and running
+```
+# Clone repo
+git clone https://github.com/robinkar/gambit-challenge.git
 
-### `yarn start`
+# Navigate to repo
+cd gambit-challenge
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Install deps
+yarn
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+# Build production build
+yarn run build
 
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Run the application
+yarn start
+```  
+By default the server starts on port 3001, but that can be changed by setting the environment variable PORT, either in an .env file or for example by starting using the command `PORT=4000 yarn start`(Linux) or `set PORT=4000 && yarn start`(Windows).
