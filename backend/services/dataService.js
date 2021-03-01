@@ -38,13 +38,23 @@ const parseData = (registerData) => {
       case 'INTEGER': {
         const val = buf.readInt16LE();
         result.push({ name: def.name, value: val, id: i });
-
+        break;
+      }
+      case 'INTEGER_SPEC1': {
+        // eslint-disable-next-line no-bitwise
+        const val = (buf.readInt16LE() & 0xff00) >>> 8;
+        result.push({ name: def.name, value: val, id: i });
+        break;
+      }
+      case 'INTEGER_SPEC2': {
+        // eslint-disable-next-line no-bitwise
+        const val = buf.readInt16LE() & 0xff;
+        result.push({ name: def.name, value: val, id: i });
         break;
       }
       case 'BCD': {
         const val = buf.readInt16LE();
         result.push({ name: def.name, value: val, id: i });
-
         break;
       }
       case 'BIT': {

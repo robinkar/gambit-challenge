@@ -291,10 +291,17 @@ const definitions = [
     note: '',
   },
   {
-    name: 'Working step and Signal Quality',
+    name: 'Working step',
     register: 92,
     len: 1,
-    format: 'INTEGER',
+    format: 'INTEGER_SPEC1',
+    note: '',
+  },
+  {
+    name: 'Signal Quality',
+    register: 92,
+    len: 1,
+    format: 'INTEGER_SPEC2',
     note: '',
   },
   {
