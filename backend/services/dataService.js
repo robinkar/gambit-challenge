@@ -3,6 +3,7 @@ const { readFileSync } = require('fs');
 
 const definitions = require('../data/definitions');
 
+// Extracts the contents of the registers from the feed.txt file
 const readData = () => {
   const fileData = readFileSync(path.join(__dirname, '../data/feed.txt'), 'utf-8');
   const lines = fileData.split(/\r?\n/);
@@ -17,6 +18,7 @@ const readData = () => {
   return { timestamp, registers };
 };
 
+// Parses the data from the registers
 const parseData = (registerData) => {
   const result = [];
   let i = 0;
@@ -70,8 +72,8 @@ const parseData = (registerData) => {
   return result;
 };
 
+// Read data once on startup
 const { timestamp, registers } = readData();
-
 const parsed = parseData(registers);
 
 const getAll = () => JSON.parse(JSON.stringify({ timestamp, data: parsed }));

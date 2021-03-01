@@ -8,6 +8,7 @@ import './App.css';
 function App() {
   const [data, setData] = useState({ timestamp: '', data: [] });
 
+  // Fetch data on startup, page refresh needed to retry if it fails
   useEffect(() => {
     axios
       .get('/api/data')
@@ -21,6 +22,7 @@ function App() {
       });
   }, []);
 
+  // Show table only if there is data
   const dataTable = data.data.length > 0 ? <DataTable data={data.data} /> : <p>No data to show</p>;
   return (
     <div className="App">
