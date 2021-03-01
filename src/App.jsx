@@ -6,7 +6,7 @@ import DataTable from './components/DataTable';
 import './App.css';
 
 function App() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({ timestamp: '', data: [] });
 
   useEffect(() => {
     axios
@@ -24,7 +24,8 @@ function App() {
   return (
     <div className="App">
       <h1>Modbus data</h1>
-      <DataTable data={data} />
+      <p>{`Showing data from ${data.timestamp}`}</p>
+      <DataTable data={data.data} />
     </div>
   );
 }

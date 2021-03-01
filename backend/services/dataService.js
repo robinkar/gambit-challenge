@@ -6,7 +6,7 @@ const definitions = require('../data/definitions');
 const readData = () => {
   const fileData = readFileSync(path.join(__dirname, '../data/feed.txt'), 'utf-8');
   const lines = fileData.split(/\r?\n/);
-
+  const timestamp = lines[0];
   const registerLines = lines.slice(1);
   const registers = Array(lines.length);
 
@@ -14,7 +14,7 @@ const readData = () => {
     const [reg, value] = line.split(':');
     registers[parseInt(reg, 10)] = parseInt(value, 10);
   });
-  return registers;
+  return { timestamp, registers };
 };
 
 const parseData = (registerData) => {
@@ -60,10 +60,11 @@ const parseData = (registerData) => {
   return result;
 };
 
-const fileData = readData();
-const parsed = parseData(fileData);
+const { timestamp, registers } = readData();
 
-const getAll = () => JSON.parse(JSON.stringify(parsed));
+const parsed = parseData(registers);
+
+const getAll = () => JSON.parse(JSON.stringify({ timestamp, data: parsed }));
 
 module.exports = {
   getAll,
