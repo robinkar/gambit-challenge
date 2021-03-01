@@ -21,11 +21,12 @@ function App() {
       });
   }, []);
 
+  const dataTable = data.data.length > 0 ? <DataTable data={data.data} /> : <p>No data to show</p>;
   return (
     <div className="App">
       <h1>Modbus data</h1>
-      <p>{`Showing data from ${data.timestamp}`}</p>
-      <DataTable data={data.data} />
+      <p>{data.timestamp && `Showing data from ${data.timestamp}`}</p>
+      {dataTable}
     </div>
   );
 }
